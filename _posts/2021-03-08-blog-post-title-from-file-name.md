@@ -30,3 +30,7 @@ ForEach ($thing in $things) {
     Write-Output "It highlights it using the GitHub style"
 }
 ```
+
+Now to try latex:
+
+$$\nabla x = \frac{dx}{dt}$$
