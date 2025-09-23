@@ -33,4 +33,6 @@ ForEach ($thing in $things) {
 
 Now to try latex:
 
-$$\nabla x = \frac{dx}{dt}$$
+$$
+\nabla x = \frac{dx}{dt}
+$$
