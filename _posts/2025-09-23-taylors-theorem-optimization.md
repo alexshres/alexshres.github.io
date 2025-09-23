@@ -7,10 +7,13 @@ Taylor's theorem is the backbone of numerical optimization and having a solid un
 The following definitions will be in the single-variable case but also apply to the multivariable case.
 
 * **Continuous**: A function $f: \mathcal{R} \mapsto \mathcal{R}$ is continuous in its domain if 
+
 $$
 \all \epsilon > 0, \exists \delta > 0 | |x-c| < \delta then |f(x)-f(c)| < \epsilon
 $$
+
 * **Differentiable**" A function $f: \mathcal{R} \mapsto \mathcal{R}$ is differentialbe if
+
 $$
     f^{\prime}(c) = lim_{x \mapsto c} \frac{f(x) - f(c)}{x-c}
 $$
