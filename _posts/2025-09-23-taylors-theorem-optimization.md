@@ -20,9 +20,9 @@ $$
 
 * **Continuously differentiable**: Function is differentiable and it's derivative is continuous
 
-* **Mean Value Theorem (Single Variable)**: \\( \exists c \in \mathbb{R} | f^{\prime}(c) = (f(b)-f(a))(b-a)  \\)
+* **Mean Value Theorem**: states that \\(\exists c \in \mathbb{R} | f^{\prime}(c) = (f(b)-f(a))(b-a)\\)
 
-* **Mean Value Theorem for Integrals**: \\(  \exists c \in mathbb{R} | f(c)(b - a) = \int_{a}^{b} f(x) dx   \\)
+* **Mean Value Theorem for Integrals**: states that \\(\exists c \in mathbb{R} | f(c)(b - a) = \int_{a}^{b} f(x) dx\\)
 
 #### Taylor's Theorem
 According to NW, Taylor's Theorem is defined as following:
