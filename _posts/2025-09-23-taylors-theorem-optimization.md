@@ -1,6 +1,5 @@
 ## Taylor's Theorem and Optimization
 
-Exponential growth: the rate of change is proportional to the current size:
 
 
 $$
