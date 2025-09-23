@@ -20,6 +20,8 @@ $$
 
 * **Continuously differentiable**: Function is differentiable and it's derivative is continuous
 
+* **Mean Value Theorem (Single Variable)**: \\( \exists c \in \mathbb{R} | f^{\prime}(c) = (f(b)-f(a))(b-a)  \\)
+* **Mean Value Theorem for Integrals**: \\(  \exists c \in mathbb{R} | f(c)(b - a) = \int_{a}^{b} f(x) dx   \\)
 
 #### Taylor's Theorem
 According to NW, Taylor's Theorem is defined as following:
@@ -41,9 +43,9 @@ We will go over how each of these are derived.
 Starting with (Eq. 1).
 
 Notes:
-* start with \\(g(t) = f((1-t)x+ta)\\) line segment between x and a where t parametrizes a point on that line segment
+* start with \\(g(t) = f((1-t)x+ta)\\) line segment between x and a where t parameterizes a point on that line segment
 * note \\(g(0) = f(x)\\) and \\(g(1) = f(a)\\)
-* Mean value theorem for 1 variable states there exists some \\(g^{\prime}(c) = g(1)-g(0)\\) for some \\(c \in (0, 1)\\)
+* Mean value theorem for 1 variable states there exists some \\(g^{\prime}(c) = g(1)-g(0)(1-0)\\) for some \\(c \in (0, 1)\\)
 * \\(g^{\prime}(t) = \nabla f((1-t)x+sa)^{T}(a-x)\\) NTK that we are dealing with multivariable inputs so derivative needs to be taken accordingly
 * plugging everything in: \\(g(1) - g(0) = g^{\prime}(t)(a-x)\\)
 * \\(f(a) - f(x) = \nabla f((1-t)x+ta)^{T}(a-x)\\)
@@ -52,13 +54,3 @@ Notes:
 * \\(f(x+p) = f(x) + \nabla f(x-tx + tx +tp)^{T}p\\)
 * \\(f(x+p) = f(x) + \nabla f(x+tp)^{T}p\\)
 * that's our first equation
-
-
-
-
-
-
-
-
-$$
-$$
