@@ -2,3 +2,4 @@
 .gitignore
 Gemfile
 Gemfile.lock
+_posts/2021*
