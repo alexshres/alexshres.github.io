@@ -26,6 +26,7 @@ According to NW, Taylor's theorem is defined as following:
 > Let $f: \mathbb{R}^{n} \to \mathbb{R}$ be continuously differentiable and let $p \in \mathbb{R}^{n}$.
 >
 > (Eq. 1) $$f(x+p) = f(x) + \nabla f(x)^{T}p + \frac{1}{2}p^{T}\nabla^{2}f(x+tp)p, \quad \text{for some } t \in (0, 1)$$
+>
 > If $f$ is **twice** continuously differentiable, then we have the following results:
 >
 > (Eq. 2) $$\nabla f(x+p) = \nabla f(x) + \int_{0}^{1}\nabla^{2}f(x+tp)p \, dt$$
