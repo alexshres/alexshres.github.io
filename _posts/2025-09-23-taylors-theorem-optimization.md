@@ -12,7 +12,7 @@ $$
 \forall \epsilon > 0, \exists \delta > 0 | |x-c| < \delta \rightarrow |f(x)-f(c)| < \epsilon
 $$
 
-* **Differentiable**" A function \\(f: \mathbb{R} \to \mathbb{R}\\) is differentiable if
+* **Differentiable**: A function \\(f: \mathbb{R} \to \mathbb{R}\\) is differentiable if
 
 $$
     f^{\prime}(c) = lim_{x \mapsto c} \frac{f(x) - f(c)}{x-c}
