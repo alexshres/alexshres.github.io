@@ -3,7 +3,7 @@ title: Random Notes
 date: 2025-09-20 12:00:00 +0000
 categories: [Deep Learning, Math]
 tags: [transformers, diffeq]
-math:true
+math: true
 ---
 
 ## random notes and things I want to remember
