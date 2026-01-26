@@ -8,7 +8,7 @@ math:true
 
 ## random notes and things I want to remember
 
-* Exponential growth basically means that the rate of growth is proportional to the current size - also from basics of differential equations but heard from [Daniel Cremers MVG lecture on representing moving scenes](https://www.youtube.com/watch?v=_tzLhSKT5Hg&list=PLTBdjV_4f-EKTxkbejHedLAM62thMLZ9_&index=4&t=3965s)
+* Exponential growth basically means that the rate of growth is proportional to the current size - also from basics of differential equations but heard from Daniel Cremers MVG lecture on representing moving scenes
 * What makes Transformers so great and so useful is that it is this generalized computation model where the main inductive bias it has is that whatever your inputs are, they need to be converted into a set of embeddings that can be pushed through the model (there's some bias in regards to positioning). 
     * The model learns the hidden biases and relationships within the data itself. 
     * This is analagous to how AlphaGo went from using Go experts to "hard code" game strategy into the model to eventually starting from scratch and learning how to play by playing against itself essentially 
