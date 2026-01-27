@@ -6,7 +6,7 @@ tags: [transformers]
 math: true
 ---
 
-# Implementing a Transformer in PyTorch
+# Implementing a Transformer in PyTorch (WIP)
 
 _Preliminaries_: Assumption is that you have some background/knowledge about how the transformer architecture works. Some good overviews are [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/), or [The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/). The second option also includes its own implementation which differs from what I'll be going over. My implementation will follow the [ARENA curriculum](https://www.arena.education/curriculum).
 
