@@ -8,8 +8,10 @@ math: true
 
 # Implementing a Transformer in PyTorch (WIP)
 
-_Preliminaries_: Assumption is that you have some background/knowledge about how the transformer architecture works. Some good overviews are [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/), or [The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/). The second option also includes its own implementation which differs from what I'll be going over. My implementation will follow the [ARENA curriculum](https://www.arena.education/curriculum).
+_Preliminaries_: Assumption is that you have some background/knowledge about how the transformer architecture works. Some good overviews are [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/), or [The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/). The second option also includes its own implementation which differs from what I'll be going over. My implementation will follow the [ARENA curriculum](https://www.arena.education/curriculum).  This will most likely be one of two blog posts with this one going over the technical details of implementation and the next one going over training and sampling from the model (sampling might end up being its own post).
 
+
+My goal in this post is to go through the questions and comments that I had as I try to implement my own small GPT-2 model by expanding upon the exercises I completed from the ARENA curriculum (which I highly recommend - it is hard and very in-depth but very worth every second).
 
 ### Architecture Overview
 
