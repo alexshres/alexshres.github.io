@@ -37,14 +37,14 @@ Some very basic background about embeddings. If we have a sequence (interchangea
 
 Let's go through a quick example and say our dataset is `["hug", "pug", "pun", "bun", "rug"]` and our BPE process results in the tokens `["h", "u", "g", "p", "n", "r", "b", "un", "ug"]`. These tokens make up our vocabulary and vocab size here is 9. We can assign each token an ID so:
 
-| Token | ID |
+| Token |  ID   |
 | :---: | :---: |
-| h | 0 |
-| u | 1 |
-| g | 2 |
-| . | . |
-| un | 7 |
-| ug | 8 |
+|   h   |   0   |
+|   u   |   1   |
+|   g   |   2   |
+|   .   |   .   |
+|  un   |   7   |
+|  ug   |   8   |
 
 
 There are other tokenization processes and for this post, we will just assume that the tokenization process has already been done for us.
@@ -96,5 +96,22 @@ nn.init.normal_(self.W_E, std=init_range)
 
 We first initialize our weight matrix `self.W_E` to be $\in \mathbb{R}^{\text{d\_vocab} \times \text{d\_model}}$. Then `nn.init.normal_(...)` initializes our matrix to have values pulled from a normal distribution with $\mu=0$ and $\sigma=0.02$. Why $0.02$? As Neel says, "cargo culting" - GPT-2 did this so we just copy.
 
-Our weight matrix has `d_vocab` rows and `d_model` columns. This is interpreted as each row represents an embedding and the $i_{th}$ token's embedding is the $i_{th}$ row of `self.W_E`.  `self.W_E[tokens, :]` is just a fancy way of extracting each row for a set of given tokens. Using the example of the personal diary again, each element of the entire diary's vocabulary has an embedding associated with it. If now, we are trying to predict the next token in the sequence "Today was a ____" then "Today was a " gets tokenized by whatever process we used. Then `self.W_E[tokens, :'` uses fancy indexing to extract a matrix of the shape `(seq, d_model)` where `seq` is the length of our sequence "Today was a " after it has been tokenized.
+Our weight matrix has `d_vocab` rows and `d_model` columns. This is interpreted as each row represents an embedding and the $i_{th}$ token's embedding is the $i_{th}$ row of `self.W_E`.  `self.W_E[tokens, :]` is just a fancy way of extracting each row for a set of given tokens. Using the example of the personal diary again, each element of the entire diary's vocabulary has an embedding associated with it. If now, we are trying to predict the next token in the sequence "Today was a ____" then "Today was a " gets tokenized by whatever process we used. Then `self.W_E[tokens, :]` uses fancy indexing to extract a matrix of the shape `(seq, d_model)` where `seq` is the length of our sequence "Today was a " after it has been tokenized.
 
+
+#### Postion Embeddings
+
+Position embeddings, implementations are very similar to token embeddings. Position embeddings are exactly what they sound like: given a sequence, each token in the sequence corresponds to a position. In "I ate an apple", for the sake of simplicity let's assume each word is a token, "I" is the $0^{th}$ position and "apple" is the $3^{rd}$ position. 
+
+Why do we care about including position? The answer has to do with how attention (coming up) works. Attention doesn't really look at a sentence "in order." If we look at the sentence "I ate an apple..." and we were to focus on the word "apple," the attention mechanism focuses on the word "ate" most likely to figure out that apple is a food. However, if "ate" came after "apple", then "apple" would _still_ look at "ate" to figure out what "apple" may be. Another issue is that if "ate" came say, 500 words before "apple", then the attention paid to "ate" may still be the same as it is a few words within "apple".
+
+Now what we have been taking about - basically enumerating each token from 0 to the number of tokens - isn't really a great idea. If we were to do this with a very large piece of text as input, the values of could range from 0 to somewhere in the millions easily, especially after we have done BPE. Similar to the token embeddings, the model might end up believing that tokens right next to each other are the most important whereas the positions farther apart have no relationship.  While either might be true for some texts, it is not always true. Outside of the context of the sequence, there are also the issues of:
+
+* __vanishing/exploding gradients__: neural networks do not do well with large unnormalized numbers, weighted connected to these inputs will struggle to stay stable
+* __generalization__: during training, our models only sees up to a context length tokens, if it's just looking at a raw counter, it hasn't learned that specific count above the context length yet
+* __relationship issue__: model might struggle to see relative patterns, it will be hard for the model to learn that the relationship between say tokens 2 and 7 are the same as the relationship between 201 and 206
+
+So how do we actually fix this? There are a few ways to get a position embedding that actually works. The way we will be doing it is through learned positional embeddings. In learned positional embeddings, the model learns a unique vector for every position index (again very similar to token embeddings). The other two main ways are sinusoidal encodings (used in the original _Attention is All You Need_ paper) and rotationary postion embeddings (also known as RoPE). There are arguments against using RoPE, the current state-of-the-art models, because it forces a specific inductive bias onto the model. The positions are forced through a geometric filter and assumes token must follow some mathematical decay, this is out of scope for this post though.  Learned positional embeddings have their own cons: if we are training our model on sequences of length 512, the model literally cannot fathom sequences of length 513 or more because it hasn't learned a vector for that 'slot' yet.
+
+
+Last thing to note is that once these positional embeddings have been created, they are actually vectors in the same space as the token embeddings. This way we can add these two vectors together. Some models concatenate the two (stack them on top of each other) but this would mean all our weights are suddenly much much larger (e.g. if our embedding space is 512, now we have 1024 dimensional vector).
